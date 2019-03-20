@@ -1,8 +1,4 @@
 import websocket
-import thread
-import time
-import sys
-import json
 
 def on_message(ws, message):
     print message
