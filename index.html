@@ -1,0 +1,23 @@
+<p id="text"></p>
+
+<script>
+var exampleSocket = new WebSocket("wss://api.hitbtc.com/api/2/ws");
+console.log(exampleSocket);
+
+exampleSocket.onopen = function(event) {
+
+    var msg = {
+        "method": "subscribeOrderbook",
+        "params": {
+            "symbol": "ETHBTC"
+        },
+        "id": 123
+    };
+
+    exampleSocket.send(JSON.stringify(msg));
+}
+
+exampleSocket.onmessage = function(event) {
+    document.getElementById("text").innerHTML = JSON.stringify(event.data);
+}   
+</script>
